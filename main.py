@@ -58,6 +58,7 @@ curh = current_datetime.hour
 curm = current_datetime.minute
 timehours = 0
 timeminutes = 0
+# таймер
 def settime():
     up1 = types.InlineKeyboardButton('+10', callback_data='up1')
     up2 = types.InlineKeyboardButton('+5', callback_data='up2')
@@ -80,6 +81,7 @@ def settime():
     settime = types.InlineKeyboardMarkup([[up1, up2, up3, space, up4, up5, up6], [bh1,space2,bm1], [down1, down2, down3, conf, down4, down5, down6]])
     return settime
 
+# создание дней календарного месяца
 def create(cury, curm):
     if cury != current_datetime.year or curm != current_datetime.month:
         curmonthnumber = 1
@@ -112,7 +114,7 @@ def create(cury, curm):
     markup = types.InlineKeyboardMarkup(clndr)
     return markup
 
-
+# создание месяцев календарного года
 def fullyear(cury):
     allyear = []
     if cury == current_datetime.year:
@@ -137,7 +139,7 @@ def fullyear(cury):
     markup = types.InlineKeyboardMarkup(allyear)
     return markup
     
-            
+# создание переменной startloop для того чтобы цикл не запускался многократно когда устанавливаешь время отправки             
 startloop = False
 @bot.message_handler(content_types=['text'])
 def oth(message):
@@ -158,8 +160,7 @@ def oth(message):
             timedmarkup = types.InlineKeyboardMarkup(dates)
             bot.send_message(message.chat.id, 'Выберите что именно хотите отменить', reply_markup=timedmarkup)
 
-    elif message.text == 'Установить время отправки':
-        
+    elif message.text == 'Установить время отправки': 
         global curm
         global cury
         curm = current_datetime.month
