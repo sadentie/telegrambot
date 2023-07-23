@@ -35,7 +35,7 @@ def img():
 
 
 
-bot = telebot.TeleBot('5657737695:AAEvQqZMdftPZVqivwcFTAqN2GMm2OMCJqo')
+bot = telebot.TeleBot('TOKEN')
 
 def downbuttons():
     markup = types.ReplyKeyboardMarkup(row_width=2,resize_keyboard=True)
